@@ -3,26 +3,29 @@
   height: 100%;
   background-color: white;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container-calendars h1 {
-  height: 5%;
-  padding-left: 3%;
+  height: 10%;
+  width: 100%;
+  background-color: #feffbe;
   font-size: 20px;
   color: #6991cf;
-}
-
-.flex-calendars {
-  height: 100%;
+  padding-left: 2%;
   display: flex;
-  padding: 5%;
+  align-items: center;
+  font-weight: normal;
 }
 
 .calendar {
-  width: 40%;
+  width: 60%;
   height: 80%;
   margin: 0;
-  margin-left: 3%;
+  margin-left: 15%;
+  margin-top: 1%;
   overflow: hidden;
   background-color: transparent;
   border-radius: 18px;

@@ -5,14 +5,12 @@ import {
   faBookmark, 
   faCalendarAlt, 
   faCog, 
-  faCreditCardAlt, 
-  faUserCircle 
+  faCreditCardAlt,  
 } from '@fortawesome/free-solid-svg-icons';
 import Reserves from './01-Reserves/Reserves';
-import Client from './02-Client/Client';
-import Messages from './03-Messages/Messages';
-import Payments from "./04-Payments/Payments";
-import Calendars from './05-Calendar/Calendar';
+import Payments from "./02-Payments/Payments";
+import Calendars from './03-Calendar/Calendar';
+import Messages from './04-Setting/Setting';
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -51,15 +49,6 @@ const Home = () => {
               <div className='info-button'>
                 <FontAwesomeIcon icon={faBookmark} className='icons' />
                 <h3 className='button-text'>Reservas</h3>
-              </div>
-            </button>
-            <button 
-              className= {button === 'buttonB'? 'active':'button'} 
-              onClick={() => handleClick(<Client/>, 'buttonB')}
-            >
-              <div className='info-button'>
-                <FontAwesomeIcon icon={faUserCircle} className='icons' />
-                <h3 className='button-text'>Datos del cliente</h3>
               </div>
             </button>
             <button 

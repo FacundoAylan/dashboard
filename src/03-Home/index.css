@@ -75,7 +75,7 @@
   display: grid;
   grid-template-columns: 35% 35%;
   grid-template-rows: 35% 35%;
-  row-gap: 12%;
+  row-gap: 14%;
   column-gap: 5%;
   font-family: Nunito;
 }

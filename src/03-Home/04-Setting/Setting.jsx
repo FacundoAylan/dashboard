@@ -1,9 +1,10 @@
 import React from 'react';
 import './index.css';
 
-const Messages = () => {
+const Setting = () => {
   return (
     <div className='conatiner-messages'>
+      <h1>Configuración</h1>
       <div className='messages'>
         <div className='avatar-messages'/>
         <h3>Mensaje Nuevo: Hola, buenos dias!</h3>
@@ -20,4 +21,4 @@ const Messages = () => {
   )
 };
 
-export default Messages;
+export default Setting;

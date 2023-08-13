@@ -11,19 +11,11 @@ const Calendars = () => {
   return (
     <div className='container-calendars'>
       <h1>Calendario</h1>
-      <div className='flex-calendars'>
         <div className='calendar'>
           <Calendar
             onChange={handleDateChange}
             defaultActiveStartDate={selectedDate}
           />
-        </div>
-        <div className='calendar'>
-          <Calendar
-            onChange={handleDateChange}
-            defaultActiveStartDate={selectedDate}
-          />
-        </div>
       </div>
     </div>
   )
