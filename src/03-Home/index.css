@@ -1,15 +1,16 @@
 .container-home {
   width: 96%;
   height: 91.5vh;
-  background-color: #aebdb6;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2%;
+  font-family: Nunito;
 }
 
 .container-info {
+  font-family: Nunito;
   width: 99%;
   height: 95vh;
   border-radius: 36px;
@@ -48,7 +49,7 @@
 .container-admin {
   width: 55%;
   height: 6%;
-  background-color: #faff00;
+  background-color: #104ba3;
   margin-top: 5%;
   padding-top: 1%;
   padding-left: 2%;
@@ -62,7 +63,7 @@
   left: 100%;
   width: 15%;
   height: 100%;
-  background-color: #faff00;
+  background-color: #104ba3;
   transform: skewX(-25deg);
   transform-origin: top right;
 }
@@ -76,6 +77,7 @@
   grid-template-rows: 35% 35%;
   row-gap: 12%;
   column-gap: 8%;
+  font-family: Nunito;
 }
 
 .cuadro1 {
@@ -83,7 +85,7 @@
   border: 1px solid black;
   height: 100%;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .cuadro2 {
@@ -93,7 +95,7 @@
   border: 0.5px solid black;
   height: 100%;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .cuadro3 {
@@ -103,9 +105,17 @@
   border: 0.5px solid black;
   height: 100%;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 4px;
 }
-
+.cuadro4 {
+  grid-row: 1;
+  grid-column: 2;
+  background-color:#faff00;
+  border: 0.5px solid black;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
 .square {
   flex: 1;
   font-size: 24px;
@@ -129,7 +139,7 @@
 
 .button {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 10%;
   margin-top: 3%;
   border: none;
@@ -137,10 +147,47 @@
   padding: 1%;
   cursor: pointer;
   overflow: hidden;
+  display: flex;
+  font-family: Nunito;
+}
+.button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 15%;
+  height: 100%;
+  background-color: #e6e8ef;
+  transform: skewX(-25deg);
+  transform-origin: top right;
+}
+.active {
+  position: relative;
+  width: 90%;
+  height: 10%;
+  margin-top: 3%;
+  border: none;
+  background-color: #faff00;
+  padding: 1%;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+}
+.active:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 15%;
+  height: 100%;
+  background-color: #e6e8ef;
+  transform: skewX(-25deg);
+  transform-origin: top right;
 }
 
 .button:hover{
  transform: scale(1.1);
+ background-color: #faff00;
 }
 .info-button {
   position: absolute;
@@ -151,11 +198,13 @@
   padding: 0;
   top: 0;
   left: 0;
+  padding-top: 2%;
 }
 .icons {
-  height: 100%;
+  height: 70%;
   width: 30%;
   color: #6c877a;
+  margin-top: 1%;
 }
 
 .button-text {
@@ -163,7 +212,8 @@
   align-items: flex-start;
   margin: 0;
   padding-top: 1%;
-  color: #6c877a;
+  color: #7b99c9;
+  ;
 }
 .button-exit {
   text-decoration: none;
@@ -243,4 +293,5 @@
   height: 100%;
   overflow: hidden;
   background-color: #faff00;
+  font-family: Nunito;
 }

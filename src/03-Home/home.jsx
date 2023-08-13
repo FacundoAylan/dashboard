@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import { FaBuilding, FaCalendar, FaComment, FaSignOutAlt, FaUser, FaWallet } from 'react-icons/fa';
-import "./index.css";
+import { FaSignOutAlt } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faBookmark, 
+  faCalendarAlt, 
+  faCog, 
+  faCreditCardAlt, 
+  faUserCircle 
+} from '@fortawesome/free-solid-svg-icons';
 import Reserves from './01-Reserves/Reserves';
 import Client from './02-Client/Client';
 import Messages from './03-Messages/Messages';
 import Payments from "./04-Payments/Payments";
 import Calendars from './05-Calendar/Calendar';
 import { Link } from "react-router-dom";
+import "./index.css";
 
 const Home = () => {
 
   const [currentComponent, setCurrentComponent] = useState(<Reserves />);
+  const [button, setButton] = useState(null);
 
-  const handleClick = (newComponent) => {
+  const handleClick = (newComponent, button) => {
     setCurrentComponent(newComponent);
+    setButton(button)
   };
-
+  console.log(button)
   return (
     <div className='container-home'>
       <div className='container-info'>
@@ -34,34 +44,49 @@ const Home = () => {
             <h3 className="title-admin">Admin</h3>
           </div>
           <div className='container-buttons'>
-            <button className='button' onClick={() => handleClick(<Reserves/>)}>
+            <button 
+              className= {button === 'buttonA'? 'active':'button'}  
+              onClick={() => handleClick(<Reserves/>,'buttonA')}
+            >
               <div className='info-button'>
-                <FaBuilding className='icons' />
+                <FontAwesomeIcon icon={faBookmark} className='icons' />
                 <h3 className='button-text'>Reservas</h3>
               </div>
             </button>
-            <button className='button' onClick={() => handleClick(<Client/>)}>
+            <button 
+              className= {button === 'buttonB'? 'active':'button'} 
+              onClick={() => handleClick(<Client/>, 'buttonB')}
+            >
               <div className='info-button'>
-                <FaUser className='icons' />
+                <FontAwesomeIcon icon={faUserCircle} className='icons' />
                 <h3 className='button-text'>Datos del cliente</h3>
               </div>
             </button>
-            <button className='button' onClick={() => handleClick(<Messages/>)}>
+            <button 
+              className= {button === 'buttonD'? 'active':'button'} 
+              onClick={() => handleClick(<Payments/>, 'buttonD')}
+            >
               <div className='info-button'>
-                <FaComment className='icons' />
-                <h3 className='button-text'>Mensajes</h3>
-              </div>
-            </button>
-            <button className='button' onClick={() => handleClick(<Payments/>)}>
-              <div className='info-button'>
-                <FaWallet className='icons' />
+                <FontAwesomeIcon icon={faCreditCardAlt} className='icons' />
                 <h3 className='button-text'>Pagos</h3>
               </div>
             </button>
-            <button className='button' onClick={() => handleClick(<Calendars/>)}>
+            <button 
+              className= {button === 'buttonE'? 'active':'button'}  
+              onClick={() => handleClick(<Calendars/>, 'buttonE')}
+            >
               <div className='info-button'>
-                <FaCalendar className='icons' />
+                <FontAwesomeIcon icon={faCalendarAlt} className='icons' />
                 <h3 className='button-text'>Calendario</h3>
+              </div>
+            </button>
+            <button
+              className= {button === 'buttonC'? 'active':'button'}  
+              onClick={() => handleClick(<Messages/>, 'buttonC')}
+            >
+              <div className='info-button'>
+                <FontAwesomeIcon icon={faCog} className='icons' />
+                <h3 className='button-text'>Configuración</h3>
               </div>
             </button>
           </div>
