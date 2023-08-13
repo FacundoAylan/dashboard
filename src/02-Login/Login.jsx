@@ -19,7 +19,6 @@ const Login = () => {
     })
   }
 
-  console.log(user)
   return (
     <div className='container-login'>
       <div className='container-sesion'>
