@@ -6,6 +6,7 @@ import Client from './02-Client/Client';
 import Messages from './03-Messages/Messages';
 import Payments from "./04-Payments/Payments";
 import Calendars from './05-Calendar/Calendar';
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -67,7 +68,7 @@ const Home = () => {
           <button className='button-exit'>
             <div className='info-exit'>
               <FaSignOutAlt className='icons-exit'/>
-              <h3 className='button-text-exit'>Cerrar sesíon</h3>
+              <Link to="/login" className='button-text-exit'>Cerrar sesíon</Link>
             </div>
           </button>
         </div>
