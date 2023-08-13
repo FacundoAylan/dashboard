@@ -187,7 +187,6 @@
 
 .button:hover{
  transform: scale(1.1);
- background-color: #faff00;
 }
 .info-button {
   position: absolute;
