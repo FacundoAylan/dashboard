@@ -1,0 +1,30 @@
+.container-calendars {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+.container-calendars h1 {
+  height: 5%;
+  padding-left: 3%;
+  font-size: 20px;
+  color: #6991cf;
+}
+
+.flex-calendars {
+  height: 100%;
+  display: flex;
+  padding: 5%;
+}
+
+.calendar {
+  width: 40%;
+  height: 80%;
+  background-color: white;
+  border-radius: 18px;
+  border: 1px solid black;
+  margin-left: 2%;
+  display: flex;
+  text-align: center;
+}

@@ -1,0 +1,50 @@
+.container-Loading {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../assets/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+.Logo {
+  width: 10%;
+  height: 20%;
+  border-radius: 100%;
+  border: 3px solid white;
+  background-image: url('../assets/logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.title {
+  width: auto;
+  height: auto;
+  font-family: Nunito;
+  color: white;
+  font-size: 40px;
+}
+
+.button-Login {
+  width: 25%;
+  height: auto;
+  background-color: #ffc800;
+  text-decoration: none;
+  padding: 1%;
+  border-radius: 18px;
+  margin-top: 2%;
+  color: black;
+  font-family: Nunito;
+  font-weight: 600;
+}
+
+.button-Login:hover {
+  transform: scale(1.1);
+}

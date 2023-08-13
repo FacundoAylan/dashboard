@@ -1,0 +1,36 @@
+.conatiner-messages {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+  padding: 5%;
+  border-top: 2px solid black;
+}
+
+.messages {
+  width: 90%;
+  height: 10%;
+  background-color: #feffbe;
+  border-radius: 18px;
+  padding: 1%;
+  display: flex;
+  border: 1px solid black;
+  margin-top: 2%;
+}
+
+.avatar-messages {
+  width: 6%;
+  height: 100%;
+  border-radius: 100%;
+  background-image: url('../../assets/avatar.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.messages h3 {
+  display: flex;
+  text-align: center;
+  padding-left: 2%;
+  padding-top: 1%;
+}

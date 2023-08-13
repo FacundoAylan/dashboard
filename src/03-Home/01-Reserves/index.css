@@ -1,0 +1,78 @@
+.container-reserves {
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+}
+
+.flex {
+  background-color: #feffbe;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: 3%;
+  color: #789aaf;
+}
+
+.zonas {
+  display: flex;
+}
+.zona {
+  display: flex;
+  flex-direction: column;
+}
+
+.zona h2 {
+  height: 10%;
+}
+
+.zona h3 {
+  height: 5%;
+}
+
+.container-availability {
+  background-color: #c6edfa;
+  padding-left: 2%;
+}
+.container-availability h1 {
+  height: 8%;
+  color: #5488c4;
+}
+
+.container-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.card {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.image-card {
+  width: 50%;
+  height: 15%;
+  border-radius: 18px;
+  background-color: azure;
+  background-image: url('../../assets/cancha.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cancha-a {
+  height: 100%;
+  width: 100%;
+  border-radius: 18px;
+}
+
+.card h4 {
+  height: 4%;
+  font-size: 15px;
+  margin: 0;
+}
