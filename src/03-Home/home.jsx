@@ -17,7 +17,7 @@ import "./index.css";
 const Home = () => {
 
   const [currentComponent, setCurrentComponent] = useState(<Reserves />);
-  const [button, setButton] = useState(null);
+  const [button, setButton] = useState('buttonA');
 
   const handleClick = (newComponent, button) => {
     setCurrentComponent(newComponent);
