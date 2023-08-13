@@ -32,7 +32,7 @@ const Home = () => {
         <div className='container-button'>
           <div className='container-title'>
             <div className='figura' />
-            <h3 className='title-home'>PADEL CLUB</h3>
+            <h3 className='title-home'>PADEL Club</h3>
           </div>
           <div className='container-admin'>
             <div className='window'>
@@ -100,7 +100,7 @@ const Home = () => {
         <div className='container-data'>
           <div className='container-reserve'>
             <div className='title-reserve'>
-              <h3 className="title-name">Hola, martin</h3>
+              <h3 className="title-name">Hola, Martin</h3>
               <div className="avatar-reserver"/>
             </div>
             <div className='container-cambio'>
