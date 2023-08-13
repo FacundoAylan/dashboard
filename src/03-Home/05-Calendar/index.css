@@ -21,10 +21,77 @@
 .calendar {
   width: 40%;
   height: 80%;
-  background-color: white;
+  margin: 0;
+  margin-left: 3%;
+  overflow: hidden;
+  background-color: transparent;
   border-radius: 18px;
-  border: 1px solid black;
-  margin-left: 2%;
-  display: flex;
-  text-align: center;
+  border: 2px solid black;
+  padding: 1%;
 }
+
+/* Estilos para los días de la semana */
+.react-calendar__month-view__weekdays{
+  margin-top: 1%;
+  height: 5%;
+  color: black;
+}
+.react-calendar__month-view__weekdays__weekday {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  height: 100%;
+}
+
+/* Estilos para los números de los días */
+.react-calendar__month-view__days {
+  height: 80%; /* Aproximadamente 4 filas */
+  overflow: hidden;
+}
+.react-calendar__tile {
+  height: 10%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para los números de los días cuando se selecciona */
+.react-calendar__tile--active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Estilos para los números de los días en el mes actual */
+.react-calendar__tile--now {
+  border: 1px solid #007bff;
+}
+
+/* Estilos para los números de los días fuera del mes actual */
+.react-calendar__tile--hasActive.react-calendar__tile--now:enabled:hover {
+  background: #007bff;
+  color: #fff;
+  opacity: 0;
+}
+
+/* Estilos para todas las fechas del calendario excepto las activas */
+.react-calendar__navigation{
+  height: 5%;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+.react-calendar__navigation__arrow {
+  width: 10%;
+  height: 100%;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.react-calendar__navigation__label{
+  height: 100%;
+  width: 55%;
+}
+/* Estilos para todas las fechas del calendario cuando se les hace hover */
+.react-calendar__tile:not(.react-calendar__tile--active):hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
