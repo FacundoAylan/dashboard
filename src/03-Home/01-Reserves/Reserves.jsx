@@ -1,24 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import canchaA from "../../assets/canchaA.jpeg";
 import canchaB from "../../assets/canchaB.jpeg";
 import canchaC from "../../assets/canchaC.jpeg";
 import canchaD from "../../assets/canchaD.jpeg";
+import { format } from 'date-fns';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from "../../../firebase";
 import "./index.css";
 
 const Reserves = () => {
-  const accordionData = [
-    { title: "Cancha A", content: "Contenido del Item 1." },
-    { title: "Cancha B", content: "Contenido del Item 2." },
-    { title: "Cancha C", content: "Contenido del Item 3." },
-  ];
 
   const [openItemIndex, setOpenItemIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setOpenItemIndex(openItemIndex === index ? null : index);
   };
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchDataFromFirestore = async () => {
+      try {
+        const collectionRef = collection(db, "reserves");
+        const querySnapshot = await getDocs(collectionRef);
+        const documents = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setData(documents);
+      } catch (error) {
+        console.error("Error al recuperar datos de Firestore");
+      }
+    };
+    fetchDataFromFirestore();
+  }, []);
+
+  const data1 = data?.map((info) =>{
+        const start = info.startTime;
+        const dateObj = new Date(start);
+        const timeStart = format(dateObj, 'HH:mm');
+        const end = info.endTime;
+        const date = new Date(end);
+        const timeEnd = format(date, 'HH:mm');
+        const hora = `${timeStart}-${timeEnd} hs`;
+        const fecha = format(date, 'yyyy-MM-dd');
+        return {
+          paddle: info.paddle.name,
+          fecha: fecha,
+          hora: hora,
+          name: info.userId
+        } 
+  })
+  console.log(data1)
 
   return (
     <div className="container-reserves">
@@ -26,13 +60,13 @@ const Reserves = () => {
         <h1>Reservas</h1>
         <div className="container-client">
           <div className="accordion">
-            {accordionData.map((item, index) => (
+            {data1?.map((item, index) => (
               <div className="accordion-item" key={index}>
                 <div
                   className="accordion-header"
                   onClick={() => toggleAccordion(index)}
                 >
-                  <h3>{item.title}</h3>
+                  <h3>{item.paddle}</h3>
                   <FontAwesomeIcon
                     className="icon-accordion"
                     icon={openItemIndex === index ? faChevronUp : faChevronDown}
@@ -42,21 +76,15 @@ const Reserves = () => {
                   <div className="accordion-content">
                     <div>
                       <h2>Usuario</h2>
-                      <h3>Miguel</h3>
-                      <h3>Pedro</h3>
-                      <h3>Juan</h3>
+                      <h3>{item.name}</h3>
                     </div>
                     <div>
                       <h2>Fecha</h2>
-                      <h3>25/08/2023</h3>
-                      <h3>26/09/2023</h3>
-                      <h3>27/10/2023</h3>
+                      <h3>{item.fecha}</h3>
                     </div>
                     <div>
                       <h2>Hora</h2>
-                      <h3>12:00 a 15:00 hs</h3>
-                      <h3>12:00 a 15:00 hs</h3>
-                      <h3>12:00 a 15:00 hs</h3>
+                      <h3>{item.hora}</h3>
                     </div>
                   </div>
                 )}

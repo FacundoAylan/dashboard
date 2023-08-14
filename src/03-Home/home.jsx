@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSignOutAlt } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -12,6 +12,7 @@ import Payments from "./02-Payments/Payments";
 import Calendars from './03-Calendar/Calendar';
 import Messages from './04-Setting/Setting';
 import { Link } from "react-router-dom";
+
 import "./index.css";
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
     setCurrentComponent(newComponent);
     setButton(button)
   };
-  console.log(button)
+  
   return (
     <div className='container-home'>
       <div className='container-info'>
