@@ -5,13 +5,12 @@ import canchaA from "../../assets/canchaA.jpeg";
 import canchaB from "../../assets/canchaB.jpeg";
 import canchaC from "../../assets/canchaC.jpeg";
 import canchaD from "../../assets/canchaD.jpeg";
-import { format } from 'date-fns';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { format } from "date-fns";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import "./index.css";
 
 const Reserves = () => {
-
   const [openItemIndex, setOpenItemIndex] = useState(null);
 
   const toggleAccordion = (index) => {
@@ -36,23 +35,30 @@ const Reserves = () => {
     fetchDataFromFirestore();
   }, []);
 
-  const data1 = data?.map((info) =>{
-        const start = info.startTime;
-        const dateObj = new Date(start);
-        const timeStart = format(dateObj, 'HH:mm');
-        const end = info.endTime;
-        const date = new Date(end);
-        const timeEnd = format(date, 'HH:mm');
-        const hora = `${timeStart}-${timeEnd} hs`;
-        const fecha = format(date, 'yyyy-MM-dd');
-        return {
-          paddle: info.paddle.name,
-          fecha: fecha,
-          hora: hora,
-          name: info.userId
-        } 
-  })
-  console.log(data1)
+  const data1 = data?.map((info) => {
+    const start = info.startTime;
+    const dateObj = new Date(start);
+    const timeStart = format(dateObj, "HH:mm");
+    const end = info.endTime;
+    const date = new Date(end);
+    const timeEnd = format(date, "HH:mm");
+    const hora = `${timeStart}-${timeEnd} hs`;
+    const fecha = format(date, "yyyy-MM-dd");
+    return {
+      paddle: info.paddle.name,
+      fecha: fecha,
+      hora: hora,
+      name: info.userId,
+    };
+  });
+  const groupedData = {};
+  
+  data1?.forEach((item) => {
+    if (!groupedData[item.paddle]) {
+      groupedData[item.paddle] = [];
+    }
+    groupedData[item.paddle].push(item);
+  });
 
   return (
     <div className="container-reserves">
@@ -60,36 +66,52 @@ const Reserves = () => {
         <h1>Reservas</h1>
         <div className="container-client">
           <div className="accordion">
-            {data1?.map((item, index) => (
-              <div className="accordion-item" key={index}>
-                <div
-                  className="accordion-header"
-                  onClick={() => toggleAccordion(index)}
-                >
-                  <h3>{item.paddle}</h3>
-                  <FontAwesomeIcon
-                    className="icon-accordion"
-                    icon={openItemIndex === index ? faChevronUp : faChevronDown}
-                  />
-                </div>
-                {openItemIndex === index && (
-                  <div className="accordion-content">
-                    <div>
-                      <h2>Usuario</h2>
-                      <h3>{item.name}</h3>
-                    </div>
-                    <div>
-                      <h2>Fecha</h2>
-                      <h3>{item.fecha}</h3>
-                    </div>
-                    <div>
-                      <h2>Hora</h2>
-                      <h3>{item.hora}</h3>
-                    </div>
+            {
+              data1 ? Object.entries(groupedData).map(([paddle, items], index) => (
+                <div className="accordion-item" key={index}>
+                  <div
+                    className="accordion-header"
+                    onClick={() => toggleAccordion(index)}
+                  >
+                    <h3>{paddle}</h3>
+                    <FontAwesomeIcon
+                      className="icon-accordion"
+                      icon={openItemIndex === index ? faChevronUp : faChevronDown}
+                    />
                   </div>
-                )}
-              </div>
-            ))}
+                  {openItemIndex === index && (
+                    <div className="accordion-content">
+                      <div
+                        style={{ display: "flex", width: "100%", height: "2%" }}
+                      >
+                        <h2>Usuario</h2>
+                        <h2>Fecha</h2>
+                        <h2>Hora</h2>
+                      </div>
+                      {items.map((item, subIndex) => (
+                        <div key={subIndex} style={{ display: "flex", overflow:'scroll', height:'5%' }}>
+                          <div style={{height:'3%'}}>
+                            <h3 style={{paddingLeft:'4%'}}>{item.name}</h3>
+                          </div>
+                          <div style={{height:'3%'}}>
+                            <h3>{item.fecha}</h3>
+                          </div>
+                          <div style={{height:'3%'}}>
+                            <h3>{item.hora}</h3>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+              : 
+              <div className="loading-container">
+                <div className="spinner"/>
+                <h1>Cargando...</h1>
+            </div>
+            }
+
           </div>
         </div>
       </div>
