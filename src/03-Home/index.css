@@ -298,7 +298,7 @@
 .accordion-content {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .loading-container {

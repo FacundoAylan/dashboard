@@ -33,7 +33,7 @@ const Reserves = () => {
       }
     };
     fetchDataFromFirestore();
-  }, []);
+  });
 
   const data1 = data?.map((info) => {
     const start = info.startTime;
@@ -82,14 +82,14 @@ const Reserves = () => {
                   {openItemIndex === index && (
                     <div className="accordion-content">
                       <div
-                        style={{ display: "flex", width: "100%", height: "2%" }}
+                        style={{ display: "flex", width: "100%", height: "2%", overflow:'hidden' }}
                       >
                         <h2>Usuario</h2>
                         <h2>Fecha</h2>
                         <h2>Hora</h2>
                       </div>
                       {items.map((item, subIndex) => (
-                        <div key={subIndex} style={{ display: "flex", overflow:'scroll', height:'5%' }}>
+                        <div key={subIndex} style={{ display: "flex", height:'5%' }}>
                           <div style={{height:'3%'}}>
                             <h3 style={{paddingLeft:'4%'}}>{item.name}</h3>
                           </div>
