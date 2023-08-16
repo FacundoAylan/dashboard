@@ -294,11 +294,12 @@
   background-color: #faff00;
   font-family: Nunito;
 }
-
 .accordion-content {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  width: 98%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .loading-container {

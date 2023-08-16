@@ -33,7 +33,7 @@ const Reserves = () => {
       }
     };
     fetchDataFromFirestore();
-  });
+  },[]);
 
   const data1 = data?.map((info) => {
     const start = info.startTime;
@@ -48,7 +48,7 @@ const Reserves = () => {
       paddle: info.paddle.name,
       fecha: fecha,
       hora: hora,
-      name: info.userId,
+      name: info.name,
     };
   });
   const groupedData = {};
@@ -60,6 +60,12 @@ const Reserves = () => {
     groupedData[item.paddle].push(item);
   });
 
+  const sortedKeys = Object.keys(groupedData).sort();
+  const sortedGroupedData = {};
+  sortedKeys.forEach((key) => {
+    sortedGroupedData[key] = groupedData[key];
+  });
+
   return (
     <div className="container-reserves">
       <div className="flex">
@@ -67,7 +73,7 @@ const Reserves = () => {
         <div className="container-client">
           <div className="accordion">
             {
-              data1 ? Object.entries(groupedData).map(([paddle, items], index) => (
+              data1 ? Object.entries(sortedGroupedData).map(([paddle, items], index) => (
                 <div className="accordion-item" key={index}>
                   <div
                     className="accordion-header"
@@ -82,14 +88,14 @@ const Reserves = () => {
                   {openItemIndex === index && (
                     <div className="accordion-content">
                       <div
-                        style={{ display: "flex", width: "100%", height: "2%", overflow:'hidden' }}
+                        style={{ display: "flex", width: "98%", height: "2%", overflow:'hidden' }}
                       >
                         <h2>Usuario</h2>
                         <h2>Fecha</h2>
                         <h2>Hora</h2>
                       </div>
                       {items.map((item, subIndex) => (
-                        <div key={subIndex} style={{ display: "flex", height:'5%' }}>
+                        <div key={subIndex} style={{ display: "flex", height:'5%', width: '98%'}}>
                           <div style={{height:'3%'}}>
                             <h3 style={{paddingLeft:'4%'}}>{item.name}</h3>
                           </div>
