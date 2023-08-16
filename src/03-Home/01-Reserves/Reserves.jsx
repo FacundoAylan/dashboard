@@ -33,7 +33,7 @@ const Reserves = () => {
       }
     };
     fetchDataFromFirestore();
-  });
+  },[]);
 
   const data1 = data?.map((info) => {
     const start = info.startTime;
