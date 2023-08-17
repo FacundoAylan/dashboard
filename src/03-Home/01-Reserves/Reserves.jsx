@@ -17,6 +17,7 @@ const Reserves = () => {
     setOpenItemIndex(openItemIndex === index ? null : index);
   };
   const [data, setData] = useState();
+  const [paddles, setPaddle] = useState();
 
   useEffect(() => {
     const fetchDataFromFirestore = async () => {
@@ -27,7 +28,13 @@ const Reserves = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        const collectionPaddle = collection(db, "paddle");
+        const queryPaddle = await getDocs(collectionPaddle);
+        const paddles = queryPaddle.docs.map((doc) => ({
+          ...doc.data(),
+        }));
         setData(documents);
+        setPaddle(paddles[0])
       } catch (error) {
         console.error("Error al recuperar datos de Firestore");
       }
@@ -65,7 +72,7 @@ const Reserves = () => {
   sortedKeys.forEach((key) => {
     sortedGroupedData[key] = groupedData[key];
   });
-
+  console.log(paddles)
   return (
     <div className="container-reserves">
       <div className="flex">
@@ -121,43 +128,33 @@ const Reserves = () => {
           </div>
         </div>
       </div>
-      <div className="container-availability">
-        <h1>Disponibilidad</h1>
-        <div className="container-card">
-          <div className="card">
-            <div className="image-card">
-              <img src={canchaA} alt="Mi Imagen" className="cancha-a" />
-            </div>
-            <h4>Cancha A</h4>
-            <h4>Av.Santa fe 2896</h4>
-            <h4>$8900</h4>
-          </div>
-          <div className="card">
-            <div className="image-card">
-              <img src={canchaB} alt="Mi Imagen" className="cancha-a" />
-            </div>
-            <h4>Cancha B</h4>
-            <h4>Av.Corrientes 1896</h4>
-            <h4>$5900</h4>
-          </div>
-          <div className="card">
-            <div className="image-card">
-              <img src={canchaC} alt="Mi Imagen" className="cancha-a" />
-            </div>
-            <h4>Cancha C</h4>
-            <h4>Av.9 de julio 896</h4>
-            <h4>$18900</h4>
-          </div>
-          <div className="card">
-            <div className="image-card">
-              <img src={canchaD} alt="Mi Imagen" className="cancha-a" />
-            </div>
-            <h4>Cancha D</h4>
-            <h4>Av. Maipu 14896</h4>
-            <h4>$20000</h4>
+      { data1 &&
+        <div className="container-availability">
+          <h1>Disponibilidad</h1>
+          <div className="container-card">
+            {
+              paddles?.paddle.map((paddle) => {
+                return(
+                  <div className="card">
+                    <div 
+                      className= {paddle.status === 'Disponible'? 'approved': 'reject'}
+                    >
+                      {paddle.status}
+                    </div>
+                    <div className="image-card">
+                      <img src={paddle.images} alt="Mi Imagen" className="cancha-a" />
+                    </div>
+                    <h4>{paddle.name}</h4>
+                    <h4>{paddle.address}</h4>
+                    <h4>${paddle.price}</h4>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
-      </div>
+
+      }
     </div>
   );
 };
