@@ -1,100 +1,112 @@
 .container-calendars {
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #ffffff;
+}
+.container-calendars h1 {
+  width: 100%;
+  height: auto;
+  background-color: #feffbe;
+  color: #104ba3;
+  padding-left: 2%;
+}
+.card-calendar {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.calendar-header {
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
-
-.container-calendars h1 {
-  height: 10%;
-  width: 100%;
-  background-color: #feffbe;
-  font-size: 20px;
-  color: #6991cf;
-  padding-left: 2%;
-  display: flex;
-  align-items: center;
-  font-weight: normal;
-}
-
-.calendar {
-  width: 60%;
-  height: 80%;
-  margin: 0;
-  margin-left: 15%;
-  margin-top: 1%;
-  overflow: hidden;
+.calendar-header h1 {
+  height: auto;
+  color: #00c2ff;
   background-color: transparent;
-  border-radius: 18px;
-  border: 2px solid black;
+}
+.button-prevMonth {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 1%;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.button-nextMonth {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1%;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.card-icons{
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  padding: 1%;
+  color: #00c2ff;
+  background-color: #dcf1f8;
+}
+.container_calendar {
+  width: 98%;
+  height: 98%;
   padding: 1%;
 }
 
-/* Estilos para los días de la semana */
-.react-calendar__month-view__weekdays{
-  margin-top: 1%;
-  height: 5%;
-  color: black;
+.calendar-flex {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-top: 2%;
 }
-.react-calendar__month-view__weekdays__weekday {
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: auto;
+  background-color: transparent;
+  border: 0;
   font-weight: bold;
-  font-size: 14px;
-  color: #333;
-  height: 100%;
 }
 
-/* Estilos para los números de los días */
-.react-calendar__month-view__days {
-  height: 80%; /* Aproximadamente 4 filas */
-  overflow: hidden;
-}
-.react-calendar__tile {
-  height: 10%;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+.container-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  height: auto;
+  color: #5f5f5f;
+  margin-top: 2%;
 }
 
-/* Estilos para los números de los días cuando se selecciona */
-.react-calendar__tile--active {
-  background-color: #007bff;
-  color: #fff;
+.calendar-day{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 35%;
+  height: auto;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  margin-left: 30%;
 }
-
-/* Estilos para los números de los días en el mes actual */
-.react-calendar__tile--now {
-  border: 1px solid #007bff;
-}
-
-/* Estilos para los números de los días fuera del mes actual */
-.react-calendar__tile--hasActive.react-calendar__tile--now:enabled:hover {
-  background: #007bff;
-  color: #fff;
-  opacity: 0;
-}
-
-/* Estilos para todas las fechas del calendario excepto las activas */
-.react-calendar__navigation{
-  height: 5%;
-  margin-top: 1%;
-  margin-left: 1%;
-}
-.react-calendar__navigation__arrow {
-  width: 10%;
-  height: 100%;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.react-calendar__navigation__label{
-  height: 100%;
-  width: 55%;
-}
-/* Estilos para todas las fechas del calendario cuando se les hace hover */
-.react-calendar__tile:not(.react-calendar__tile--active):hover {
-  background-color: #ddd;
+.calendar-day:hover {
+  background-color: #00b1e9;
+  color: white;
   cursor: pointer;
 }
 
+.selected-day{
+  background-color: #faff00;
+  color: #5f5f5f;
+}

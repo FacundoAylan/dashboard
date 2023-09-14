@@ -4,6 +4,7 @@ import './index.css';
 const Setting = () => {
   return (
     <div className='conatiner-messages'>
+      <button>Cargan info</button>
       <h1>Configuración</h1>
       <div className='messages'>
         <div className='avatar-messages'/>

@@ -1,21 +1,14 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import React from 'react';
 import './index.css';
+import CardCalendar from './CardCalendar';
 
 const Calendars = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
   return (
     <div className='container-calendars'>
       <h1>Calendario</h1>
-        <div className='calendar'>
-          <Calendar
-            onChange={handleDateChange}
-            defaultActiveStartDate={selectedDate}
-          />
+        <div className='card-calendar'>
+          <CardCalendar/>
       </div>
     </div>
   )
